@@ -1,5 +1,4 @@
-//Get a dog photo from the dog.ceo api and place the photo in the DOM
-const monster_url = "https://api.open5e.com/monsters/?page=2"
+const monster_url = "https://api.open5e.com/monsters/?limit=1500"
 const select = document.querySelector('.type')
 const resetbutton = document.querySelector('.resetbutton')
 let monster_list = document.querySelector('.monster_list')
@@ -23,18 +22,6 @@ fetch(monster_url)
             option.innerText = selection//display breed inside the thing
             select.appendChild(option)
         });
-
-        console.log(typeArr)
-
-    })
-
-// need to append a k,v to have corresponding name:type
-fetch(monster_url)
-    .then(res => {
-        return res.json();
-    })
-    .then(data => {
-        const monsterObj = data.results;
         nt_dict = []
         monsterObj.forEach(elem => {
             nameObj = elem.name
@@ -46,10 +33,11 @@ fetch(monster_url)
 
         })
 
-        console.log(nt_dict)
-    });
+        console.log(typeArr)
 
+    })
 
+// need to append a k,v to have corresponding name:type
 
 // on change of option value look through the monsterObj to find corresnponding name
 select.addEventListener('change', event => {
